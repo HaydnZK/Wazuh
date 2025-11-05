@@ -23,7 +23,7 @@ sudo apt install curl apt-transport-https unzip wget gnupg -y
 ### Command Breakdown:
 -  `install` - tells apt to download and install specified packages
 -  `curl` - transfers data to or from a server, often used for downloading scripts
--  `apt`-transport-https - allows apt to access repositories over HTTPS
+-  `apt-transport-https` - allows apt to access repositories over HTTPS
 -  `unzip` - extracts .zip archives
 -  `wget` - another tool for downloading files from the web
 -  `gnupg` - provides encryption and signing capabilities for verifying repository keys
