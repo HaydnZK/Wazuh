@@ -1,9 +1,3 @@
-```
-sudo apt update
-sudo apt upgrade -y
-sudo apt install curl apt-transport-https unzip wget gnupg -y
-```
-
 ## Step One: Updating and Upgrading Packages
 The first thing I did was run a couple simple commands to make sure everything on the VM is up to date before installing dependencies:
 
@@ -22,7 +16,9 @@ sudo apt upgrade -y
 ## Step Two: Installing Required Utilities
 This installs common utilities (curl, wget, unzip, etc.) that Wazuh relies on:
 
-`sudo apt install curl apt-transport-https unzip wget gnupg -y`
+```
+sudo apt install curl apt-transport-https unzip wget gnupg -y
+```
 
 ### Command Breakdown:
 ⦁ install - tells apt to download and install specified packages
@@ -35,7 +31,9 @@ This installs common utilities (curl, wget, unzip, etc.) that Wazuh relies on:
 ## Step Three: Verify Everything is Installed Correctly
 I used this command to confirm that all necessary utilities were installed:
 
-`ls -la /usr/bin | grep -E "curl|wget|unzip"`
+```
+ls -la /usr/bin | grep -E "curl|wget|unzip"
+```
 
 ### Command Breakdown:
 ⦁ ls -la /usr/bin - lists all files in /usr/bin including hidden files
@@ -72,12 +70,16 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 ## Step Six: Update the Package List
 Now that the repository is added, update the package list to see the Wazuh packages:
 
-`sudo apt update`
+```
+sudo apt update
+```
 
 ## Step Seven: Installing the Wazuh Manager
 The Wazuh manager collects, analyzes, and correlates security events. The API is included in the manager package:
 
-`sudo apt install wazuh-manager -y`
+```
+sudo apt install wazuh-manager -y
+```
 
 ## Step Eight: Start and Enable Wazuh Services
 Start the Wazuh manager, enable it to launch at boot, and verify it is active:
