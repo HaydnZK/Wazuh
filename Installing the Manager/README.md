@@ -1,8 +1,8 @@
 ## Step One: Updating and Upgrading Packages
 The first thing I did was run a couple simple commands to make sure everything on the VM is up to date before installing dependencies:
 
-sudo apt update
-sudo apt upgrade -y
+'sudo apt update'
+'sudo apt upgrade -y'
 
 ### Command Breakdown:
 ⦁ Sudo - temporarily gives superuser privileges to allow system-level changes
@@ -14,7 +14,7 @@ sudo apt upgrade -y
 ## Step Two: Installing Required Utilities
 This installs common utilities (curl, wget, unzip, etc.) that Wazuh relies on:
 
-sudo apt install curl apt-transport-https unzip wget gnupg -y
+'sudo apt install curl apt-transport-https unzip wget gnupg -y'
 
 ### Command Breakdown:
 ⦁ install - tells apt to download and install specified packages
@@ -27,7 +27,7 @@ sudo apt install curl apt-transport-https unzip wget gnupg -y
 ## Step Three: Verify Everything is Installed Correctly
 I used this command to confirm that all necessary utilities were installed:
 
-ls -la /usr/bin | grep -E "curl|wget|unzip"
+'ls -la /usr/bin | grep -E "curl|wget|unzip"'
 
 ### Command Breakdown:
 ⦁ ls -la /usr/bin - lists all files in /usr/bin including hidden files
@@ -38,8 +38,8 @@ ls -la /usr/bin | grep -E "curl|wget|unzip"
 ## Step Four: Importing Wazuh GPG Key
 Next, I imported the Wazuh GPG key so Ubuntu can trust the packages:
 
-curl -s https://packages.wazuh.com/key/gpg-key-wazuh
- | sudo gpg --dearmor -o /usr/share/keyrings/wazuh.gpg
+'curl -s https://packages.wazuh.com/key/gpg-key-wazuh'
+'| sudo gpg --dearmor -o /usr/share/keyrings/wazuh.gpg'
 
 ### Command Breakdown:
 ⦁ curl -s - downloads the GPG key silently
@@ -49,8 +49,8 @@ curl -s https://packages.wazuh.com/key/gpg-key-wazuh
 ## Step Five: Add the Wazuh Repository
 This command tells Ubuntu where to find Wazuh packages:
 
-echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt
- stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
+'echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt'
+'stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list'
 
 ### Command Breakdown:
 ⦁ echo - prints the repository line
@@ -60,19 +60,19 @@ echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4
 ## Step Six: Update the Package List
 Now that the repository is added, update the package list to see the Wazuh packages:
 
-sudo apt update
+'sudo apt update'
 
 ## Step Seven: Installing the Wazuh Manager
 The Wazuh manager collects, analyzes, and correlates security events. The API is included in the manager package:
 
-sudo apt install wazuh-manager -y
+'sudo apt install wazuh-manager -y'
 
 ## Step Eight: Start and Enable Wazuh Services
 Start the Wazuh manager, enable it to launch at boot, and verify it is active:
 
-sudo systemctl start wazuh-manager
-sudo systemctl enable wazuh-manager
-sudo systemctl status wazuh-manager
+'sudo systemctl start wazuh-manager'
+'sudo systemctl enable wazuh-manager'
+'sudo systemctl status wazuh-manager'
 
 ### Command Breakdown:
 ⦁ systemctl - tool for controlling systemd services
@@ -83,8 +83,8 @@ sudo systemctl status wazuh-manager
 ## Step Nine: Verify Wazuh Manager is Active and Collecting Logs
 Finally, check that Wazuh is processing logs properly:
 
-sudo tail -n 20 /var/ossec/logs/ossec.log
-sudo tail -f /var/ossec/logs/ossec.log
+'sudo tail -n 20 /var/ossec/logs/ossec.log'
+'sudo tail -f /var/ossec/logs/ossec.log'
 
 ### Command Breakdown:
 ⦁ tail -n 20 - shows the last 20 lines of the log, providing a quick view of recent activity
