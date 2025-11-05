@@ -1,3 +1,9 @@
+```
+sudo apt update
+sudo apt upgrade -y
+sudo apt install curl apt-transport-https unzip wget gnupg -y
+```
+
 ## Step One: Updating and Upgrading Packages
 The first thing I did was run a couple simple commands to make sure everything on the VM is up to date before installing dependencies:
 
